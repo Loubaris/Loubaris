@@ -4,7 +4,7 @@
  ███      ███  ███ ███  ███ ███  ███ ███  ███ ███ ███  ███     ███
  ████████  ██████   ██████  ███████  ██   ███ ██   ███ ███  █████
 
-     Web Developer • Machine Learning • Ethical Hacker 
+     Web Developer • Machine Learning • Ethical Hacker
 
 ❯ Website           loubaris.github.io
 ❯ Email             adamou.loubaris@gmail.com
