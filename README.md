@@ -10,6 +10,6 @@
 
      Web Developer • Machine Learning • Ethical Hacker 
 
-❯ Website           jarv.is
+❯ Website           loubaris.github.io
 ❯ Email             adamou.loubaris@gmail.com
 ❯ Discord           @MaukatYT#8004
