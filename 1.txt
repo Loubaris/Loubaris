@@ -1,1 +1,201 @@
+# -*- coding: utf-8 -*-
 
+import sys
+from PyQt5 import QtCore, QtGui, QtWidgets
+from time import sleep
+import os
+import socket
+
+
+connection = 0
+
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(300, 300)
+        MainWindow.setStyleSheet("background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop: 0 rgba(45,0,255,1), stop:0.7 rgb(0,192,255,1));\n"
+"")
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(100, 30, 91, 91))
+        self.label.setStyleSheet("background: transparent;\n"
+"")
+        self.label.setText("")
+        self.label.setPixmap(QtGui.QPixmap("images/update.png"))
+        self.label.setScaledContents(True)
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_2.setGeometry(QtCore.QRect(60, 130, 181, 31))
+        font = QtGui.QFont()
+        font.setFamily("Lato")
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setItalic(True)
+        font.setWeight(75)
+        self.label_2.setFont(font)
+        self.label_2.setStyleSheet("background: transparent;\n"
+"color: white;")
+        self.label_2.setObjectName("label_2")
+        self.update = QtWidgets.QProgressBar(self.centralwidget)
+        self.update.setGeometry(QtCore.QRect(60, 170, 181, 23))
+        self.update.setStyleSheet("QProgressBar#update:chunk {\n"
+"background-color: #00b0c7;\n"
+"border: 2px solid white;\n"
+"border-radius: 10px;\n"
+"color: white;\n"
+"text-align: center;\n"
+"}\n"
+"QProgressBar#update {\n"
+"background: white;\n"
+"border: 3px solid white;\n"
+"border-radius: 10px;\n"
+"color: white;\n"
+"text-align: center;\n"
+"}")
+        self.update.setProperty("value", 0)
+        self.update.setFormat("")
+        self.update.setObjectName("update")
+        self.eleve = QtWidgets.QPushButton(self.centralwidget)
+        self.eleve.setGeometry(QtCore.QRect(120, 230, 61, 61))
+        self.eleve.setStyleSheet("background: none;\n"
+"border: 2px solid white;\n"
+"border-radius: 5px;")
+        self.eleve.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("images/backpack.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.eleve.setIcon(icon)
+        self.eleve.setIconSize(QtCore.QSize(61, 61))
+        self.eleve.setObjectName("eleve")
+        self.prof = QtWidgets.QPushButton(self.centralwidget)
+        self.prof.setGeometry(QtCore.QRect(30, 230, 61, 61))
+        self.prof.setStyleSheet("background: none;\n"
+"border: 2px solid white;\n"
+"border-radius: 5px;")
+        self.prof.setText("")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("images/teaching.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.prof.setIcon(icon1)
+        self.prof.setIconSize(QtCore.QSize(61, 61))
+        self.prof.setObjectName("prof")
+        self.administration = QtWidgets.QPushButton(self.centralwidget)
+        self.administration.setGeometry(QtCore.QRect(210, 230, 61, 61))
+        self.administration.setStyleSheet("background: none;\n"
+"border: 2px solid white;\n"
+"border-radius: 5px;")
+        self.administration.setText("")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("images/gear.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.administration.setIcon(icon2)
+        self.administration.setIconSize(QtCore.QSize(61, 61))
+        self.administration.setObjectName("administration")
+        self.label_3 = QtWidgets.QLabel(self.centralwidget)
+        self.label_3.setGeometry(QtCore.QRect(127, 200, 51, 31))
+        font = QtGui.QFont()
+        font.setFamily("Lato")
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setItalic(True)
+        font.setWeight(75)
+        self.label_3.setFont(font)
+        self.label_3.setStyleSheet("background: transparent;\n"
+"color: white;")
+        self.label_3.setObjectName("label_3")
+        self.label_4 = QtWidgets.QLabel(self.centralwidget)
+        self.label_4.setGeometry(QtCore.QRect(20, 200, 91, 31))
+        font = QtGui.QFont()
+        font.setFamily("Lato")
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setItalic(True)
+        font.setWeight(75)
+        self.label_4.setFont(font)
+        self.label_4.setStyleSheet("background: transparent;\n"
+"color: white;")
+        self.label_4.setObjectName("label_4")
+        self.label_5 = QtWidgets.QLabel(self.centralwidget)
+        self.label_5.setGeometry(QtCore.QRect(190, 200, 111, 31))
+        font = QtGui.QFont()
+        font.setFamily("Lato")
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setItalic(True)
+        font.setWeight(75)
+        self.label_5.setFont(font)
+        self.label_5.setStyleSheet("background: transparent;\n"
+"color: white;")
+        self.label_5.setObjectName("label_5")
+        MainWindow.setCentralWidget(self.centralwidget)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        
+        self.eleve.clicked.connect(self.espace_eleve)
+        
+        self.eleve.hide()
+        self.prof.hide()
+        self.administration.hide()
+        self.label_3.hide()
+        self.label_4.hide()
+        self.label_5.hide()
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MalSpace"))
+        self.label_2.setText(_translate("MainWindow", "Recherche de mise à jour.."))
+        self.label_3.setText(_translate("MainWindow", "Élèves"))
+        self.label_4.setText(_translate("MainWindow", "Enseignants"))
+        self.label_5.setText(_translate("MainWindow", "Administration"))
+   
+    
+    def nomaj():
+        print("Pas de connection, pas de mise à jour")
+    
+    def test_connection():
+	    try:
+		    socket.create_connection(("8.8.8.8", 53))
+		    print("Connection fonctionnelle")
+		    connection = 1
+	    except OSError:
+		    connection = 0
+		    nomaj()
+    test_connection()
+    
+    def findownload():
+        maj(1)
+    
+    def Progress(self, blocknum, blocksize, totalsize): 
+  
+        # Calcul du progrès de la bar
+        readed_data = blocknum * blocksize 
+  
+        if totalsize > 0: 
+            download_percentage = readed_data * 100 / totalsize 
+            self.update.setValue(download_percentage)
+            if download_percentage == 100:
+                findownload()
+            QApplication.processEvents() 
+    
+    def maj(etape):
+        
+        if etape == 0:
+            down_url = 'https://raw.githubusercontent.com/Loubaris/Loubaris/master/1.txt'
+            save_loc = 'updates/1.txt'
+            urllib.request.urlretrieve(down_url,save_loc, self.Progress)
+        elif etape == 1:
+            print("Fin du téléchargement")
+    
+    
+    maj(0)
+    
+    def espace_eleve(self):
+        print(">> Espace élèves")
+        
+        
+if __name__ == "__main__":
+    app = QtWidgets.QApplication(sys.argv)
+    w = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(w)
+    w.show()
+    sys.exit(app.exec_())
