@@ -15,5 +15,5 @@
 
 ❯ 🌎 Website           loubaris.github.io
 ❯ 📬 Email             adamou.loubaris@gmail.com
-❯ 🐦 Discord           @MaukatYT#8004
+❯ 🐦 Discord           @Maukat#8004
 ```
